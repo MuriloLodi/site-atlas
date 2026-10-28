@@ -473,14 +473,13 @@ ul { list-style: none; margin: 0; padding: 0; }
 /* ==========================================================
    CTA FINAL
    ========================================================== */
-.cta { padding: var(--section-y) 0 0; overflow: hidden; }
+.cta { padding: var(--section-y) 0; overflow: hidden; }
 .cta__grid {
   display: grid;
-  grid-template-columns: 1fr 1.05fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 40px;
+  gap: 56px;
 }
-.cta__text { padding-bottom: var(--section-y); }
 
 .cta__title {
   max-width: 520px;
@@ -529,7 +528,6 @@ ul { list-style: none; margin: 0; padding: 0; }
 
 .cta__visual {
   position: relative;
-  align-self: end;
   justify-self: center;
   width: 100%;
   max-width: 640px;
@@ -629,7 +627,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   .about__shape { width: 90vw; opacity: .45; }
 
   .cta__grid { grid-template-columns: 1fr; gap: 8px; }
-  .cta__text { padding-bottom: 24px; }
   .cta__visual { max-width: 420px; }
 
   .footer__grid { grid-template-columns: 1fr; gap: 40px; }
