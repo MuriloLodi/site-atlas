@@ -276,7 +276,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   --stack-top: 110px;
   --stack-step: 30px;
   display: grid;
-  gap: 28vh;
+  gap: 20px;
 }
 /* Room for the last card to settle so the full stack holds for a moment
    (sticky ignores the container's padding, so it has to be a real box) */
@@ -562,7 +562,7 @@ ul { list-style: none; margin: 0; padding: 0; }
    RESPONSIVO
    ========================================================== */
 @media (max-width: 900px) {
-  .cards { --stack-top: 72px; --stack-step: 18px; gap: 18vh; }
+  .cards { --stack-top: 72px; --stack-step: 18px; gap: 16px; }
   /* equal heights keep the stack aligned when it leaves */
   .card { grid-template-columns: 1fr; align-content: start; gap: 22px; padding: 34px 28px; min-height: 420px; }
   .card__icon { margin-bottom: 18px; }
