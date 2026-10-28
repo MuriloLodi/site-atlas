@@ -99,6 +99,18 @@ if (!reduceMotion) {
     hero.addEventListener('pointerleave', () => { tx = 50; ty = 55; });
   }
 
+  // Service cards: pointer light, and shrink/darken when the next card covers them
+  const cards = Array.from(document.querySelectorAll('.card'));
+  if (finePointer) {
+    cards.forEach((card) => {
+      card.addEventListener('pointermove', (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--hx', `${e.clientX - r.left}px`);
+        card.style.setProperty('--hy', `${e.clientY - r.top}px`);
+      });
+    });
+  }
+
   let lastY = window.scrollY;
   let boost = 0;
   let last = performance.now();
@@ -121,6 +133,15 @@ if (!reduceMotion) {
       if (s.x <= -half) s.x += half;
       if (s.x > 0) s.x -= half;
       s.track.style.transform = `translate3d(${s.x}px,0,0)`;
+    });
+
+    cards.forEach((card, i) => {
+      const next = cards[i + 1];
+      if (!next) return;
+      const r = card.getBoundingClientRect();
+      const cover = Math.max(0, Math.min(1, (r.bottom - next.getBoundingClientRect().top) / r.height));
+      card.style.setProperty('--cover', cover.toFixed(3));
+      card.style.transform = `scale(${1 - cover * 0.04})`;
     });
 
     if (glow) {
