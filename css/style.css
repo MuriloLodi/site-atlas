@@ -454,21 +454,18 @@ ul { list-style: none; margin: 0; padding: 0; }
 .marquee--work .marquee__track { gap: 22px; padding-right: 22px; }
 .marquee--reverse { --speed: 55s; }
 
-/* Crops each project out of the portfolio slide (source is 1920x1080) */
 .shot {
   flex: none;
-  aspect-ratio: var(--w) / var(--h);
+  display: block;
+  width: auto;
+  object-fit: cover;
   border-radius: var(--radius-shot);
-  background-repeat: no-repeat;
-  background-size: calc(1920 / var(--w) * 100%) auto;
-  background-position:
-    calc(var(--x) / (1920 - var(--w)) * 100%)
-    calc(var(--y) / (1080 - var(--h)) * 100%);
+  background: var(--surface);
   transition: transform .4s var(--ease);
 }
 .shot:hover { transform: scale(1.02); }
-.shot--c { height: clamp(220px, 26vw, 330px); background-image: url("../assets/portfolio/carrosseis.jpg"); }
-.shot--p { height: clamp(260px, 30vw, 380px); background-image: url("../assets/portfolio/posts.jpg"); }
+.shot--c { height: clamp(220px, 26vw, 330px); aspect-ratio: 808 / 632; }
+.shot--p { height: clamp(260px, 30vw, 380px); aspect-ratio: 3 / 4; }
 
 /* ==========================================================
    CTA FINAL
@@ -510,20 +507,13 @@ ul { list-style: none; margin: 0; padding: 0; }
 .cta__proof strong { font-size: 17px; font-weight: 500; }
 
 .avatars { display: flex; padding-left: 12px; }
-/* Each avatar is a square crop of a post from the portfolio slide */
 .avatar {
-  --w: 200;
-  --h: 200;
   width: 46px;
   height: 46px;
   margin-left: -12px;
   border: 2px solid var(--bg);
   border-radius: 50%;
-  background-image: url("../assets/portfolio/posts.jpg");
-  background-size: calc(1920 / var(--w) * 100%) auto;
-  background-position:
-    calc(var(--x) / (1920 - var(--w)) * 100%)
-    calc(var(--y) / (1080 - var(--h)) * 100%);
+  object-fit: cover;
 }
 
 .cta__visual {
@@ -578,11 +568,12 @@ ul { list-style: none; margin: 0; padding: 0; }
 .footer__arrow.reveal.is-visible { transform: none; }
 .footer__grid {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
   align-items: center;
   gap: 64px;
 }
-.footer__thanks { text-align: center; justify-self: center; }
+.footer__thanks { text-align: center; }
 .footer__big {
   font-size: clamp(54px, 6vw, 84px);
   font-weight: 600;
@@ -609,6 +600,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .footer__contacts a:hover { color: var(--support); }
 .ico-fill { width: 34px; height: 34px; flex: none; fill: var(--primary); }
 .footer__legal {
+  text-align: center;
   margin-top: 80px;
   font-size: 13px;
   color: rgba(255, 255, 255, .45);
@@ -629,7 +621,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   .cta__grid { grid-template-columns: 1fr; gap: 8px; }
   .cta__visual { max-width: 420px; }
 
-  .footer__grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer__grid { grid-template-columns: 1fr; justify-content: stretch; gap: 40px; }
   .footer__thanks { justify-self: start; text-align: left; }
   .footer__divider { width: 100%; height: 1px; min-height: 0; }
 }
@@ -643,7 +635,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   .work__title-row { gap: 18px; }
   .footer__contacts a { font-size: 17px; }
   .footer__arrow { width: 90px; opacity: .7; }
-  .footer__legal { padding-right: 100px; }
+  .footer__legal { padding-right: 100px; text-align: left; }
   .ico-fill { width: 28px; height: 28px; }
 }
 
